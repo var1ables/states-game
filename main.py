@@ -19,10 +19,7 @@ while len(states) < 50:
     answer_state = screen.textinput(title=f'{len(states)}/50', prompt='Whats the state?').title()
 
     if answer_state == "Exit":
-        learning_states = []
-        for state in correct_answers:
-            if state not in states:
-                learning_states.append(state)
+        learning_states = [state for state in correct_answers if state not in states]
         new_data = pandas.DataFrame(learning_states)
         new_data.to_csv('states_to_learn')
         break
